@@ -1,0 +1,154 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             MYCODE, CODE, READONLY
+    2 00000000         
+    3 00000000                 ENTRY
+    4 00000000                 EXPORT           main
+    5 00000000         
+    6 00000000         
+    7 00000000         main
+    8 00000000 F04F 0000       MOV              R0, #0      ; R0 = first index
+    9 00000004 F04F 0114       MOV              R1, #20     ; R1 = last index
+   10 00000008         
+   11 00000008 F8DF C038       LDR              R12, =array ; R12 = array addre
+                                                            ss
+   12 0000000C F8DC 9000       LDR              R9, [R12 ,#0]
+   13 00000010 F000 F800       BL               Bubble      ; Jump Bubble
+   14 00000014         
+   15 00000014         
+   16 00000014         
+   17 00000014         Bubble
+   18 00000014 B083            SUB              SP, SP, #12 ; SP 
+   19 00000016 F8CD E008       STR              lr, [SP , #8] ; Store LR to sta
+                                                            ck 
+   20 0000001A 9101            STR              R1, [SP , #4] 
+                                                            ; Store R1 to stack
+                                                            
+   21 0000001C 9000            STR              R0, [SP , #0] 
+                                                            ; Store R0 to stack
+                                                            
+   22 0000001E 4288            CMP              R0,R1       ; 
+   23 00000020 F000 F800       BL               Check
+   24 00000024         ;MOV R9, #0
+   25 00000024         Check
+   26 00000024 F100 0204       ADD              R2, R0, #4  ; R2 next address
+   27 00000028 F85C 3000       LDR              R3, [R12, R0] ; R3 = array[R0]
+   28 0000002C F85C 4002       LDR              R4, [R12, R2] ; R4 = array[R2]
+   29 00000030 42A3            CMP              R3, R4
+   30 00000032 DC01            BGT              Swap
+   31 00000034 F04F 0900       MOV              R9, #0
+   32 00000038         Swap
+   33 00000038 461D            MOV              R5, R3
+   34 0000003A F84C 3002       STR              R3, [R12, R2] ;
+   35 0000003E F84C 4000       STR              R4, [R12, R0]
+   36 00000042         
+   37 00000042         
+   38 00000042         STOP
+   39 00000042 E7FE            B                STOP
+   40 00000044         
+   41 00000044 00000000        AREA             DATAARR, DATA, READWRITE
+   42 00000000         
+   43 00000000 00000016 
+              00000004 
+              0000000C 
+              00000028 
+              00000096 
+              0000000D array   DCD              22,4,12,40,150,13
+   44 00000018         
+   45 00000018                 END                          ;End of the program
+                                                            
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\objects\insertion.d -o.\objects\insertion.o -IC:\Users\l3oat\Des
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+ktop\test\TEST\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Kei
+l_v5\ARM\PACK\ARM\CMSIS\4.5.0\Device\ARM\ARMCM3\Include --predefine="__UVISION_
+VERSION SETA 517" --predefine="_RTE_ SETA 1" --predefine="ARMCM3 SETA 1" --list
+=.\listings\insertion.lst Insertion.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Bubble 00000014
+
+Symbol: Bubble
+   Definitions
+      At line 17 in file Insertion.s
+   Uses
+      At line 13 in file Insertion.s
+Comment: Bubble used once
+Check 00000024
+
+Symbol: Check
+   Definitions
+      At line 25 in file Insertion.s
+   Uses
+      At line 23 in file Insertion.s
+Comment: Check used once
+MYCODE 00000000
+
+Symbol: MYCODE
+   Definitions
+      At line 1 in file Insertion.s
+   Uses
+      None
+Comment: MYCODE unused
+STOP 00000042
+
+Symbol: STOP
+   Definitions
+      At line 38 in file Insertion.s
+   Uses
+      At line 39 in file Insertion.s
+Comment: STOP used once
+Swap 00000038
+
+Symbol: Swap
+   Definitions
+      At line 32 in file Insertion.s
+   Uses
+      At line 30 in file Insertion.s
+Comment: Swap used once
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 7 in file Insertion.s
+   Uses
+      At line 4 in file Insertion.s
+Comment: main used once
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DATAARR 00000000
+
+Symbol: DATAARR
+   Definitions
+      At line 41 in file Insertion.s
+   Uses
+      None
+Comment: DATAARR unused
+array 00000000
+
+Symbol: array
+   Definitions
+      At line 43 in file Insertion.s
+   Uses
+      At line 11 in file Insertion.s
+Comment: array used once
+2 symbols
+343 symbols in table

@@ -1,0 +1,2 @@
+Dependencies for Project 'test', Target 'Target 1': (DO NOT MODIFY !)
+F (.\xx.s)(0x59DCC737)(--cpu Cortex-M3 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\Device\ARM\ARMCM3\Include--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "ARMCM3 SETA 1"--list .\listings\xx.lst --xref -o .\objects\xx.o --depend .\objects\xx.d)
